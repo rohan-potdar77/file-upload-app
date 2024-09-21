@@ -1,0 +1,78 @@
+.home {
+  padding: 20px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  column-gap: 1rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.upload-button {
+  max-width: 100px;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.button-group {
+  margin-top: 10px;
+}
+
+button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="file"] {
+  display: block;
+  padding: 10px;
+  border: 2px solid #2d90f9;
+  border-radius: 5px;
+  background-color: #b7dafd;
+  color: black;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="file"]:hover {
+  border-color: #0056b3;
+  background-color: #7db9f4;
+}
+
+input[type="file"]::file-selector-button {
+  display: none;
+}
