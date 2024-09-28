@@ -1,10 +1,10 @@
 import express from "express";
-import controllerUser from "../controllers/controller.user.js";
+import user from "../controllers/controller.user.js";
 
 const publicRoutes = express.Router();
 
-publicRoutes.post("/login", controllerUser.login);
+publicRoutes.post("/login", user.login);
 
-publicRoutes.post("/register", controllerUser.register);
+publicRoutes.post("/register", user.register);
 
 export default publicRoutes;

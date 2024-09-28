@@ -12,36 +12,33 @@ const Home = () => {
 
   const handleDownload = async (id) => {
     const code = prompt("Enter the 6-digit code:");
+    if (!code) return alert("Cancelled!");
 
-    if (code) {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/api/private/file/${id}?code=${code}`,
-          {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-
-        if (response.ok) {
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        } else {
-          const body = await response.json();
-          alert(body.error);
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/private/file/${id}?code=${code}`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
         }
-      } catch (error) {
-        console.error(error);
-        alert("Error downloading the file");
+      );
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } else {
+        const body = await response.json();
+        alert(body.error);
       }
-    } else {
-      alert("Please enter a valid code!");
+    } catch (error) {
+      console.error(error);
+      alert("Error downloading the file");
     }
   };
 

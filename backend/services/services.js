@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 const corsOptions = () => {
   const whitelist = ["http://localhost:5173"];
@@ -25,8 +26,19 @@ const generateToken = async (payload) => {
   });
 };
 
+const connectToDatabase = () => {
+  mongoose
+    .connect(process.env.DATABASE)
+    .then(
+      () => console.info("Database connected!"),
+      () => console.info("Database not connected!")
+    )
+    .catch((error) => console.error(error));
+};
+
 export default {
   corsOptions,
   errorGenerator,
   generateToken,
+  connectToDatabase
 };

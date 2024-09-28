@@ -14,17 +14,17 @@ const validateUser = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     req.user = decoded;
 
-    const expirationThreshold =
-      process.env.REFRESH_THRESHOLD_IN_MIN * 60 * 1000;
+    // const expirationThreshold =
+    //   process.env.REFRESH_THRESHOLD_IN_MIN * 60 * 1000;
 
-    const currentTime = Date.now();
+    // const currentTime = Date.now();
 
-    if (decoded.exp * 1000 - currentTime <= expirationThreshold) {
-      const refreshToken = jwt.sign(decoded, process.env.TOKEN_SECRET, {
-        expiresIn: process.env.TOKEN_EXPIRATION,
-      });
-      res.setHeader("x-refresh-token", refreshToken);
-    }
+    // if (decoded.exp * 1000 - currentTime <= expirationThreshold) {
+    //   const refreshToken = jwt.sign(decoded, process.env.TOKEN_SECRET, {
+    //     expiresIn: process.env.TOKEN_EXPIRATION,
+    //   });
+    //   res.setHeader("x-refresh-token", refreshToken);
+    // }
 
     next();
   } catch (error) {
